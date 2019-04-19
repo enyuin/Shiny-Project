@@ -1,0 +1,54 @@
+Diamond Price Prediction 
+========================================================
+author: Wong Jun Xuan
+date: 19 - 4 -2019
+autosize: true
+
+Introduction
+========================================================
+
+This presentation contains documentation for Diamond price prediction application.
+
+This application is built by linear regression models using built-in 'diamond' dataset in R.
+
+The price prediction is based on 4 different variables which are
+- Carat
+- Color
+- Clarity
+- Cut
+
+This application does provide a movable plot to let user to visualise how different variable will affect the prediction.
+
+Data in the Apps
+=========================================================
+
+This application is using built-in dataset 'diamond' which is part of "ggplot2" package. 
+
+Hence, if you wants to look through all the dataset, you must first to have or install the "ggplot2" package.
+
+The dataset contains information about 53940 diamonds with 10 different variables, but we are more concern on Carat, Color, Clarity, Cut
+
+```{r}
+library(ggplot2)
+summary(diamonds)
+```
+
+Apps Environment
+========================================================
+
+This application use Shiny package to build and the souce code is stored in two different files:
+- "ui.R"
+- "server.R"
+
+Both files can be found from my github: [Shiny Github repo](https://github.com/enyuin/Shiny-Project)
+
+Plot
+========================================================
+In the scatterplot below are represented all the data used for prediction model.
+
+```{r}
+    library(ggplot2)
+    ggplot(data=diamonds, aes(x=carat, y = price))+
+      geom_point(aes(color = cut), alpha = 0.3)+
+      geom_smooth(method = "lm")
+```
